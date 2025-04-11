@@ -586,7 +586,7 @@
     const data = {
         "nome do componente": document.getElementById('pessoa').value.toUpperCase(),
         "lead": document.getElementById('lead').value.toUpperCase(),
-        "data": document.getElementById('data').value, // datas podem manter o formato original
+        "data": document.getElementById('data').value,
         "ot/ane": document.getElementById('ot_ane').value.toUpperCase(),
         "sgm": document.getElementById('sgm').value.toUpperCase(),
         "ba": document.getElementById('ba').value.toUpperCase(),
@@ -596,7 +596,11 @@
         "trafo": document.getElementById('traf').value.toUpperCase(),
         "estrutura": document.getElementById('estrut').value.toUpperCase(),
         "alim": document.getElementById('alim').value.toUpperCase(),
-        "endereço": document.getElementById('endereco').value.toUpperCase()
+        "endereço": document.getElementById('endereco').value.toUpperCase(),
+        "serviço realizado": document.getElementById('descricaoServico').value.toUpperCase(),
+        "material utilizado": document.getElementById('descricaoMaterial').value.toUpperCase(),
+        "devolução sucata": document.getElementById('descricaoSucata').value.toUpperCase(),
+        "necessário outro recurso": document.getElementById('descricaoRecurso').value.toUpperCase()
     };
 
     fetch('https://sheetdb.io/api/v1/n0sbpdp344lmd', {
