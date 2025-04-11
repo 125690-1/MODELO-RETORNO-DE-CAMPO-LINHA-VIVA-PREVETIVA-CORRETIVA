@@ -580,27 +580,23 @@
   </div>
   
   <script>
-    function saveToSheet() {
+   function saveToSheet() {
     if (!verificarCamposRespondidos()) return;
 
     const data = {
-        pessoa: document.getElementById('pessoa').value,
-        lead: document.getElementById('lead').value,
-        data: document.getElementById('data').value,
-        ot_ane: document.getElementById('ot_ane').value,
-        sgm: document.getElementById('sgm').value,
-        ba: document.getElementById('ba').value,
-        sgd: document.getElementById('sgd').value,
-        inc: document.getElementById('inc').value,
-        apr: document.getElementById('apr').value,
-        traf: document.getElementById('traf').value,
-        estrut: document.getElementById('estrut').value,
-        alim: document.getElementById('alim').value,
-        endereco: document.getElementById('endereco').value,
-        descricaoServico: document.getElementById('descricaoServico').value,
-        descricaoMaterial: document.getElementById('descricaoMaterial').value,
-        descricaoSucata: document.getElementById('descricaoSucata').value,
-        descricaoRecurso: document.getElementById('descricaoRecurso').value
+        "NOME DO COMPONENTE": document.getElementById('pessoa').value.toUpperCase(),
+        "LEAD": document.getElementById('lead').value.toUpperCase(),
+        "Data": document.getElementById('data').value, // datas podem manter o formato original
+        "OT/ANE": document.getElementById('ot_ane').value.toUpperCase(),
+        "SGM": document.getElementById('sgm').value.toUpperCase(),
+        "BA": document.getElementById('ba').value.toUpperCase(),
+        "SGD": document.getElementById('sgd').value.toUpperCase(),
+        "INC": document.getElementById('inc').value.toUpperCase(),
+        "APR": document.getElementById('apr').value.toUpperCase(),
+        "TRAFO": document.getElementById('traf').value.toUpperCase(),
+        "ESTRUTURA": document.getElementById('estrut').value.toUpperCase(),
+        "ALIM": document.getElementById('alim').value.toUpperCase(),
+        "ENDEREÇO": document.getElementById('endereco').value.toUpperCase()
     };
 
     fetch('https://sheetdb.io/api/v1/n0sbpdp344lmd', {
