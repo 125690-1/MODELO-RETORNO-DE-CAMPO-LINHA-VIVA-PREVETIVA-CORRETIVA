@@ -584,19 +584,19 @@
     if (!verificarCamposRespondidos()) return;
 
     const data = {
-        "NOME DO COMPONENTE": document.getElementById('pessoa').value.toUpperCase(),
-        "LEAD": document.getElementById('lead').value.toUpperCase(),
-        "Data": document.getElementById('data').value, // datas podem manter o formato original
-        "OT/ANE": document.getElementById('ot_ane').value.toUpperCase(),
-        "SGM": document.getElementById('sgm').value.toUpperCase(),
-        "BA": document.getElementById('ba').value.toUpperCase(),
-        "SGD": document.getElementById('sgd').value.toUpperCase(),
-        "INC": document.getElementById('inc').value.toUpperCase(),
-        "APR": document.getElementById('apr').value.toUpperCase(),
-        "TRAFO": document.getElementById('traf').value.toUpperCase(),
-        "ESTRUTURA": document.getElementById('estrut').value.toUpperCase(),
-        "ALIM": document.getElementById('alim').value.toUpperCase(),
-        "ENDEREÇO": document.getElementById('endereco').value.toUpperCase()
+        "nome do componente": document.getElementById('pessoa').value.toUpperCase(),
+        "lead": document.getElementById('lead').value.toUpperCase(),
+        "data": document.getElementById('data').value, // datas podem manter o formato original
+        "ot/ane": document.getElementById('ot_ane').value.toUpperCase(),
+        "sgm": document.getElementById('sgm').value.toUpperCase(),
+        "ba": document.getElementById('ba').value.toUpperCase(),
+        "sgd": document.getElementById('sgd').value.toUpperCase(),
+        "inc": document.getElementById('inc').value.toUpperCase(),
+        "apr": document.getElementById('apr').value.toUpperCase(),
+        "trafo": document.getElementById('traf').value.toUpperCase(),
+        "estrutura": document.getElementById('estrut').value.toUpperCase(),
+        "alim": document.getElementById('alim').value.toUpperCase(),
+        "endereço": document.getElementById('endereco').value.toUpperCase()
     };
 
     fetch('https://sheetdb.io/api/v1/n0sbpdp344lmd', {
