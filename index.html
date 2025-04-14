@@ -640,6 +640,165 @@
   </div>
   
   <script>
+ // ... outras funções
+
+    function enviarParaSheetDB() {
+        const dados = {
+            "Nome_Componente": document.getElementById('pessoa').value,
+            "LEAD": document.getElementById('lead').value,
+            "BR_Lider": document.getElementById('br1').value,
+            "OT_ANE": document.getElementById('ot_ane').value,
+            "SGM": document.getElementById('sgm').value,
+            "Data": document.getElementById('data').value,
+            "BA": document.getElementById('ba').value,
+            "SGD": document.getElementById('sgd').value,
+            "INC": document.getElementById('inc').value,
+            "DT": document.getElementById('dt').value,
+            "APR_Digital": document.getElementById('apr').value,
+            "APR_Manual": document.getElementById('apr2').value,
+            "CincoRO": cincoROValue,
+            "Trafo": document.getElementById('traf').value,
+            "Tombamento": document.getElementById('Tomb').value,
+            "Estrutura": document.getElementById('estrut').value,
+            "Alim": document.getElementById('alim').value,
+            "Endereco": document.getElementById('endereco').value,
+            "Horario_Inicio": document.getElementById('start-time').value,
+            "Horario_Final": document.getElementById('end-time').value
+        };
+
+        fetch('https://sheetdb.io/api/v1/tvshuzgwt1vmh', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ data: [dados] })
+        })
+        .then(response => response.json())
+        .then(data => {
+            console.log('Sucesso:', data);
+        })
+        .catch((error) => {
+            console.error('Erro:', error);
+        });
+    }
+
+    // Função para salvar o PDF (já existente no seu código)
+    function savePdf() {
+        if (!verificarCamposRespondidos()) { return; }
+        gerarMensagem();
+        
+        // Envia os dados para o SheetDB
+        enviarParaSheetDB();
+
+        // Código para salvar o PDF
+        let container = document.querySelector('.container');
+        let width = container.offsetWidth;
+        let height = container.offsetHeight;
+
+        let lead = document.getElementById('lead').value.trim();
+        let data = document.getElementById('data').value.trim();
+        let ot_ane = document.getElementById('ot_ane').value.trim();
+        let inc = document.getElementById('inc').value.trim();
+        let endereco = document.getElementById('endereco').value.trim();
+
+        if (data !== "") {
+            let parts = data.split("-");
+            data = parts[2] + "_" + parts[1] + "_" + parts[0];
+        }
+
+        lead = lead.replace(/\s+/g, "_");
+        ot_ane = ot_ane.replace(/\s+/g, "_");
+        inc = inc.replace(/\s+/g, "_");
+        endereco = endereco.replace(/\s+/g, "_");
+
+        let fileName = "RETORNO_CAMPO EXECUTADO_";
+        if (lead !== "") { fileName += lead; }
+        if (data !== "") { fileName += "_EM_" + data; }
+        if (ot_ane !== "") { fileName += "_ATRAVÉS_OT-ANE_" + ot_ane; }
+        else if (inc !== "") { fileName += "_ATRAVÉS_INCIDÊNCIA_" + inc; }
+        if (endereco !== "") { fileName += "_NO_ENDERECO_" + endereco; }
+        fileName += ".PDF";
+
+        fileName = fileName.toUpperCase();
+
+        html2pdf().set({
+            margin: 0,
+            filename: fileName,
+            image: { type: 'jpeg', quality: 0.99 },
+            html2canvas: { scale: 2 },
+            jsPDF: { unit: 'px', format: [width, height], orientation: 'portrait' }
+        }).from(container).save().then(() => {
+            let pdfButton = document.getElementById('pdfButton');
+            pdfButton.textContent = 'PDF JÁ SALVO';
+            pdfButton.style.backgroundColor = '#4CAF50';
+            pdfButton.style.color = '#fff';
+            pdfButton.style.border = '1px solid #4CAF50';
+            pdfButton.disabled = true;
+            pdfSaved = true;
+            document.getElementById('whatsappButton').disabled = false;
+        });
+    }
+
+function savePdf() {
+    if (!verificarCamposRespondidos()) { return; }
+    gerarMensagem();
+    
+    // Envia os dados para o SheetDB
+    enviarParaSheetDB();
+
+    // Código para salvar o PDF
+    let container = document.querySelector('.container');
+    let width = container.offsetWidth;
+    let height = container.offsetHeight;
+
+    let lead = document.getElementById('lead').value.trim();
+    let data = document.getElementById('data').value.trim();
+    let ot_ane = document.getElementById('ot_ane').value.trim();
+    let inc = document.getElementById('inc').value.trim();
+    let endereco = document.getElementById('endereco').value.trim();
+
+    if (data !== "") {
+        let parts = data.split("-");
+        data = parts[2] + "_" + parts[1] + "_" + parts[0];
+    }
+
+    lead = lead.replace(/\s+/g, "_");
+    ot_ane = ot_ane.replace(/\s+/g, "_");
+    inc = inc.replace(/\s+/g, "_");
+    endereco = endereco.replace(/\s+/g, "_");
+
+    let fileName = "RETORNO_CAMPO EXECUTADO_";
+    if (lead !== "") { fileName += lead; }
+    if (data !== "") { fileName += "_EM_" + data; }
+    if (ot_ane !== "") { fileName += "_ATRAVÉS_OT-ANE_" + ot_ane; }
+    else if (inc !== "") { fileName += "_ATRAVÉS_INCIDÊNCIA_" + inc; }
+    if (endereco !== "") { fileName += "_NO_ENDERECO_" + endereco; }
+    fileName += ".PDF";
+
+    fileName = fileName.toUpperCase();
+
+    html2pdf().set({
+        margin: 0,
+        filename: fileName,
+        image: { type: 'jpeg', quality: 0.99 },
+        html2canvas: { scale: 2 },
+        jsPDF: { unit: 'px', format: [width, height], orientation: 'portrait' }
+    }).from(container).save().then(() => {
+        let pdfButton = document.getElementById('pdfButton');
+        pdfButton.textContent = 'PDF JÁ SALVO';
+        pdfButton.style.backgroundColor = '#4CAF50';
+        pdfButton.style.color = '#fff';
+        pdfButton.style.border = '1px solid #4CAF50';
+        pdfButton.disabled = true;
+        pdfSaved = true;
+        document.getElementById('whatsappButton').disabled = false;
+    });
+}
+
+
+    // ... outras funções
+
+
     // Funções para exibir/ocultar overlay
     function showOverlay() {
       document.getElementById('popupOverlay').style.display = 'block';
