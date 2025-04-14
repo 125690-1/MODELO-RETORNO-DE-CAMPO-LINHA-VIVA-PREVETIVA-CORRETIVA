@@ -1182,57 +1182,15 @@
         el.setSelectionRange(prefix.length, prefix.length);
       }
     }
-  </script>
-  <script>
-  function enviarParaSheetDB() {
-    // Captura os dados do formulário
-    const data = {
-      pessoa: document.getElementById("pessoa").value,
-      lead: document.getElementById("lead").value,
-      br1: document.getElementById("br1").value,
-      ot_ane: document.getElementById("ot_ane").value,
-      sgm: document.getElementById("sgm").value,
-      data_execucao: document.getElementById("data").value,
-      ba: document.getElementById("ba").value,
-      sgd: document.getElementById("sgd").value,
-      inc: document.getElementById("inc").value,
-      dt: document.getElementById("dt").value,
-      apr: document.getElementById("apr").value,
-      apr2: document.getElementById("apr2").value,
-      cincoRO: document.getElementById("cincoRO-input").value,
-      traf: document.getElementById("traf").value,
-      tomb: document.getElementById("Tomb").value,
-      estrutur: document.getElementById("estrut").value,
-      alim: document.getElementById("alim").value,
-      endereco: document.getElementById("endereco").value,
-      hora_inicio: document.getElementById("start-time").value,
-      hora_fim: document.getElementById("end-time").value,
-      servico: document.getElementById("descricaoServico").value,
-      material: document.getElementById("descricaoMaterial").value,
-      sucata: document.getElementById("descricaoSucata").value,
-      recurso: document.getElementById("descricaoRecurso").value
-    };
 
-    fetch("https://sheetdb.io/api/v1/tvshuzgwt1vmh", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({ data: data })
-    })
-    .then(response => {
-      if (response.ok) {
-        alert("✅ Informações enviadas com sucesso para a planilha!");
-      } else {
-        alert("❌ Falha ao enviar dados. Verifique a conexão ou a API.");
-      }
-    })
-    .catch(error => {
-      console.error("Erro:", error);
-      alert("❌ Erro ao enviar os dados.");
-    });
-  }
-</script>
+const data = {
+  pessoa: document.getElementById("pessoa").value,
+  lead: document.getElementById("lead").value,
+  data_execucao: document.getElementById("data").value
+};
+
+  </script>
+
 
 </body>
 </html>
